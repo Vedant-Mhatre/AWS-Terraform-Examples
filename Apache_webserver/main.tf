@@ -99,7 +99,6 @@ resource "aws_security_group" "allow-web" {
   }
 }
 
-
 resource "aws_network_interface" "dev-nw" {
   subnet_id       = aws_subnet.subnet-1.id
   private_ips     = ["10.0.1.50"]
@@ -142,21 +141,7 @@ resource "aws_instance" "dev-web-ec2" {
   }
 }
 
+output "server_public_ip" {
+  value = aws_eip.one.public_ip
+}
 
-
-
-
-
-# basic syntax
-# resource "<provider>_<resource_type_name>" "name"{
-#     key = "value"
-# }
-
-# resource "aws_instance" "web" {
-#   ami           = "ami-09a7bbd08886aafdf"
-#   instance_type = "t2.micro"
-#   tags = {
-#       Name = "temporary-web-server"
-#   }
-
-# }
