@@ -1,7 +1,9 @@
-Private/*
+# Private/*
+# Private/.terraform
+*/.terraform
 terraform.tfstate
 terraform.tfstate.backup
 .terraform/plugins/registry.terraform.io/hashicorp/aws/3.6.0/linux_amd64/terraform-provider-aws_v3.6.0_x5
-/.terraform/*
+*/.terraform/*
 .terraform/plugins/registry.terraform.io/hashicorp/aws/3.6.0/linux_amd64/*
 .terraform/plugins/selections.json
