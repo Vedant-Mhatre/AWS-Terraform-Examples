@@ -2,25 +2,25 @@ provider "aws" {
   region     = "ap-south-1"
 }
 
-resource "tls_private_key" "private_key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
+# resource "tls_private_key" "private_key" {
+#   algorithm = "RSA"
+#   rsa_bits  = 4096
+# }
 
-# this resource will create a key pair using above private key
-resource "aws_key_pair" "key_pair" {
-  key_name   = "myKP"
-  public_key = tls_private_key.private_key.public_key_openssh
+# # this resource will create a key pair using above private key
+# resource "aws_key_pair" "key_pair" {
+#   key_name   = "myKP"
+#   public_key = tls_private_key.private_key.public_key_openssh
 
-   depends_on = [tls_private_key.private_key]
-}
+#    depends_on = [tls_private_key.private_key]
+# }
 
-# this resource will save the private key at our specified path.
-resource "local_file" "saveKey" {
-  content = tls_private_key.private_key.private_key_pem
-  filename = "/home/vedant/myKP.pem"
+# # this resource will save the private key at our specified path.
+# resource "local_file" "saveKey" {
+#   content = tls_private_key.private_key.private_key_pem
+#   filename = "/home/vedant/myKP.pem"
   
-}
+# }
 
 
 
@@ -164,17 +164,17 @@ resource "aws_instance" "public-web-ec2" {
                 EOF
 
 
-  provisioner "file" {
-    source      = "/home/vedant/myKP.pem"
-    destination = "/home/myKP.pem"
+  # provisioner "file" {
+  #   source      = "/home/vedant/myKP.pem"
+  #   destination = "/home/myKP.pem"
 
-    connection {
-    type     = "ssh"
-    user     = "ubuntu"
-    private_key = tls_private_key.private_key.private_key_pem
-    host     = aws_instance.public-web-ec2.public_ip
-    }
-  }
+  #   connection {
+  #   type     = "ssh"
+  #   user     = "ubuntu"
+  #   private_key = tls_private_key.private_key.private_key_pem
+  #   host     = aws_instance.public-web-ec2.public_ip
+  #   }
+  # }
 
   tags = {
     Name = "Dev-Web"
