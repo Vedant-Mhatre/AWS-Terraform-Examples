@@ -1,5 +1,5 @@
 provider "aws" {
-  region     = "ap-south-1"
+  region     = var.region
 }
 
 # resource "tls_private_key" "private_key" {
@@ -145,7 +145,7 @@ resource "aws_eip" "one" {
 }
 
 resource "aws_instance" "public-web-ec2" {
-  ami           = "ami-0cda377a1b884a1bc"
+  ami           = var.amis[var.region]
   instance_type = "t2.micro"
   availability_zone = "ap-south-1a"
   key_name = "myKP"
@@ -248,7 +248,7 @@ resource "aws_instance" "private-ec2" {
     aws_subnet.subnet-2,
 
   ]
-  ami           = "ami-0cda377a1b884a1bc"
+  ami           = var.amis[var.region]
   instance_type = "t2.micro"
   availability_zone = "ap-south-1a"
   subnet_id = aws_subnet.subnet-2.id
