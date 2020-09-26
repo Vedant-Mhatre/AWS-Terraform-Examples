@@ -1,5 +1,5 @@
 provider "aws" {
-  region     = var.region
+  region = var.region
 }
 
 # resource "tls_private_key" "private_key" {
@@ -19,9 +19,8 @@ provider "aws" {
 # resource "local_file" "saveKey" {
 #   content = tls_private_key.private_key.private_key_pem
 #   filename = "/home/vedant/myKP.pem"
-  
-# }
 
+# }
 
 
 
@@ -29,17 +28,17 @@ resource "aws_eip" "one" {
   vpc                       = true
   network_interface         = aws_network_interface.dev-nw.id
   associate_with_private_ip = "10.0.1.50"
-  depends_on = [aws_internet_gateway.gw]
+  depends_on                = [aws_internet_gateway.gw]
 }
 
 resource "aws_instance" "public-web-ec2" {
-  ami           = var.amis[var.region]
-  instance_type = "t2.micro"
+  ami               = var.amis[var.region]
+  instance_type     = "t2.micro"
   availability_zone = "ap-south-1a"
-  key_name = "myKP"
+  key_name          = "myKP"
 
   network_interface {
-    device_index = 0
+    device_index         = 0
     network_interface_id = aws_network_interface.dev-nw.id
   }
 
@@ -77,15 +76,15 @@ resource "aws_instance" "private-ec2" {
     aws_subnet.subnet-2,
 
   ]
-  ami           = var.amis[var.region]
-  instance_type = "t2.micro"
-  availability_zone = "ap-south-1a"
-  subnet_id = aws_subnet.subnet-2.id
+  ami                    = var.amis[var.region]
+  instance_type          = "t2.micro"
+  availability_zone      = "ap-south-1a"
+  subnet_id              = aws_subnet.subnet-2.id
   vpc_security_group_ids = [aws_security_group.allow-ssh.id]
-  key_name = "myKP"
+  key_name               = "myKP"
 
 
-  
+
   tags = {
     Name = "Private-Server"
   }

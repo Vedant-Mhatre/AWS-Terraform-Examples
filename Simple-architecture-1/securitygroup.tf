@@ -19,7 +19,7 @@ resource "aws_security_group" "allow-web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-# ingress {
+  # ingress {
   #   description = "HTTPS traffic from VPC"
   #   from_port   = 443
   #   to_port     = 443
@@ -43,7 +43,7 @@ resource "aws_security_group" "allow-ssh" {
   name        = "allow-ssh_traffic"
   description = "Allow SSH inbound traffic from public subnet EC2 instance"
   vpc_id      = aws_vpc.first-vpc.id
-  
+
   ingress {
     description = "SSH traffic from VPC"
     from_port   = 22
@@ -59,5 +59,5 @@ resource "aws_security_group" "allow-ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  
+
 }

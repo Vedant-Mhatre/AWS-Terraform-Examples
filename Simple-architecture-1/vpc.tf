@@ -8,8 +8,8 @@ resource "aws_vpc" "first-vpc" {
 }
 
 resource "aws_subnet" "subnet-1" {
-  vpc_id     = aws_vpc.first-vpc.id 
-  cidr_block = "10.0.1.0/24"
+  vpc_id            = aws_vpc.first-vpc.id
+  cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-south-1a"
 
   tags = {
@@ -18,8 +18,8 @@ resource "aws_subnet" "subnet-1" {
 }
 
 resource "aws_subnet" "subnet-2" {
-  vpc_id     = aws_vpc.first-vpc.id 
-  cidr_block = "10.0.2.0/24"
+  vpc_id            = aws_vpc.first-vpc.id
+  cidr_block        = "10.0.2.0/24"
   availability_zone = "ap-south-1a"
 
   tags = {
@@ -40,12 +40,12 @@ resource "aws_route_table" "r" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.gw.id 
+    gateway_id = aws_internet_gateway.gw.id
   }
 
   route {
-    ipv6_cidr_block        = "::/0"
-    gateway_id = aws_internet_gateway.gw.id 
+    ipv6_cidr_block = "::/0"
+    gateway_id      = aws_internet_gateway.gw.id
   }
 
   tags = {
@@ -74,7 +74,7 @@ resource "aws_network_interface" "dev-nw" {
 
 
 resource "aws_eip" "eip1" {
-  vpc      = true
+  vpc = true
 }
 
 resource "aws_nat_gateway" "gw" {
@@ -92,7 +92,7 @@ resource "aws_route_table" "p" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.gw.id 
+    gateway_id = aws_nat_gateway.gw.id
   }
 
 
