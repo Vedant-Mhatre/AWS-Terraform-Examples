@@ -1,4 +1,8 @@
-# AWS Terraform Examples
+<p align="center">
+    <img src="aws terraform github.png" alt="Logo" width="60%">
+</p>
+
+
 
 ## About
 The goal of this project is to create a single repository with multiple AWS Terraform examples to create simple web architectures.
@@ -18,13 +22,7 @@ Get the project up and running locally in just 3 easy steps.
 
 ```
 git clone https://github.com/your_username/AWS-Terraform-Examples.git
-
-Cloning into 'AWS-Terraform-Examples'...
-remote: Enumerating objects: 61, done.
-remote: Counting objects: 100% (61/61), done.
-remote: Compressing objects: 100% (40/40), done.
-remote: Total 61 (delta 21), reused 49 (delta 15), pack-reused 0
-Unpacking objects: 100% (61/61), 9.38 KiB | 188.00 KiB/s, done.
-
+```
+```
 cd AWS-Terraform-Examples
 ```
