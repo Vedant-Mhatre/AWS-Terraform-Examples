@@ -1,5 +1,5 @@
-resource "aws_security_group" "allow-web" {
-  name        = "allow-web_traffic"
+resource "aws_security_group" "allow-web_traffic-1" {
+  name        = "allow-web_traffic-1"
   description = "Allow Web inbound traffic"
   vpc_id      = aws_vpc.first-vpc.id
 
@@ -35,6 +35,6 @@ resource "aws_security_group" "allow-web" {
   }
 
   tags = {
-    Name = "allow-web"
+    Name = "allow-web_traffic-1"
   }
 }

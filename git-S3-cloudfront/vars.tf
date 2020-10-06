@@ -12,9 +12,9 @@ variable "s3_origin_id" {
 }
 
 variable "amis" {
-  type       = map(string)
+  type = map(string)
   default = {
-  ap-south-1 = "ami-0cda377a1b884a1bc"
-  us-west-2  = " ami-0947d2ba12ee1ff75"
+    ap-south-1 = "ami-0cda377a1b884a1bc"
+    us-west-2  = " ami-0947d2ba12ee1ff75"
   }
 }
