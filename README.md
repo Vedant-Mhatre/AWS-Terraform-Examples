@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="aws terraform github.png" alt="Logo" width="60%">
+    <img src="aws terraform githubb.png" alt="Logo" width="60%">
 </p>
 
 
