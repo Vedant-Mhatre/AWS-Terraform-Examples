@@ -1,6 +1,6 @@
 resource "aws_vpc" "first-vpc" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
+  cidr_block           = "10.0.0.0/16"
+  instance_tenancy     = "default"
   enable_dns_hostnames = true
 
   tags = {
@@ -17,9 +17,9 @@ resource "aws_internet_gateway" "gw" {
 }
 
 resource "aws_subnet" "subnet-1" {
-  vpc_id            = aws_vpc.first-vpc.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = "ap-south-1a"
+  vpc_id                  = aws_vpc.first-vpc.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "ap-south-1a"
   map_public_ip_on_launch = true
 
   tags = {

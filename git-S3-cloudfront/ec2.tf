@@ -15,6 +15,9 @@ resource "aws_instance" "public-web-ec2" {
                 sudo systemctl restart apache2
                 EOF
 
+  lifecycle {
+    create_before_destroy = true
+  }
 
   # provisioner "file" {
   #   source      = "/home/vedant/myKP.pem"
@@ -23,7 +26,7 @@ resource "aws_instance" "public-web-ec2" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("/media/vedant/9144abc5-9ffa-47d3-bba8-29c11c792c29/home/vedant/Github/Terraform/git-S3-cloudfront/myKP.pem")
+    private_key = file("/home/vedant/Desktop/github/Terraform/git-S3-cloudfront/myKP.pem")
     host        = aws_instance.public-web-ec2.public_ip
   }
 
@@ -32,10 +35,6 @@ resource "aws_instance" "public-web-ec2" {
     Name = "Dev-Web"
   }
 
-  depends_on = [
-    aws_security_group.allow-web_traffic-1,
-    aws_subnet.subnet-1
-  ]
 }
 
 output "server_public_ip" {
