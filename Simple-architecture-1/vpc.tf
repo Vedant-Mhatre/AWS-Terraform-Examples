@@ -80,8 +80,6 @@ resource "aws_eip" "eip1" {
 resource "aws_nat_gateway" "gw" {
   depends_on = [
     aws_internet_gateway.gw,
-    aws_eip.eip1,
-    aws_subnet.subnet-1,
   ]
   allocation_id = aws_eip.eip1.id
   subnet_id     = aws_subnet.subnet-1.id
@@ -102,10 +100,6 @@ resource "aws_route_table" "p" {
 }
 
 resource "aws_route_table_association" "b" {
-  depends_on = [
-    aws_subnet.subnet-2,
-    aws_route_table.p
-  ]
   subnet_id      = aws_subnet.subnet-2.id
   route_table_id = aws_route_table.p.id
 }
