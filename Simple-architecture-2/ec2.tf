@@ -43,7 +43,7 @@ resource "aws_instance" "web-2" {
   instance_type = "t2.micro"
   # availability_zone           = "ap-south-1a"
   key_name                    = "myKP"
-  subnet_id                   = aws_subnet.subnet-1.id
+  subnet_id                   = aws_subnet.subnet-2.id
   vpc_security_group_ids      = ["${aws_security_group.allow-web_traffic-1.id}"]
   associate_public_ip_address = true
   user_data                   = <<-EOF
