@@ -32,8 +32,8 @@ resource "aws_instance" "web-1" {
 
 }
 
-output "1st-instance-ip" {
-  value = aws_instance.public-web-1.public_ip
+output "first-instance-ip" {
+  value = aws_instance.web-1.public_ip
 }
 
 
@@ -72,6 +72,6 @@ resource "aws_instance" "web-2" {
 
 }
 
-output "2nd-instance-ip" {
+output "second-instance-ip" {
   value = aws_instance.web-2.public_ip
 }
