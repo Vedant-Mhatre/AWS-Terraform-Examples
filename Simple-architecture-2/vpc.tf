@@ -52,34 +52,39 @@ resource "aws_route_table_association" "a" {
 
 resource "aws_subnet" "subnet-2" {
   vpc_id            = aws_vpc.first-vpc.id
-  cidr_block        = "10.0.2.0/24"
-  availability_zone = "ap-south-1a"
+  cidr_block        = "10.0.4.0/24"
+  availability_zone = "ap-south-1b"
 
   tags = {
-    Name = "private-subnet"
+    Name = "second-subnet"
   }
 }
 
-resource "aws_eip" "eip1" {
-  vpc = true
-}
+# resource "aws_eip" "eip1" {
+#   vpc = true
+# }
 
-resource "aws_nat_gateway" "gw" {
-  allocation_id = aws_eip.eip1.id
-  subnet_id     = aws_subnet.subnet-1.id
-}
+# resource "aws_nat_gateway" "gw" {
+#   allocation_id = aws_eip.eip1.id
+#   subnet_id     = aws_subnet.subnet-1.id
+# }
 
 resource "aws_route_table" "p" {
   vpc_id = aws_vpc.first-vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.gw.id
+    gateway_id = aws_internet_gateway.gw.id
+  }
+
+  route {
+    ipv6_cidr_block = "::/0"
+    gateway_id      = aws_internet_gateway.gw.id
   }
 
 
   tags = {
-    Name = "nat-route-table"
+    Name = "second-route-table"
   }
 }
 
