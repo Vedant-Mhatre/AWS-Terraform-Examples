@@ -5,7 +5,7 @@
 
 
 ## About
-The goal of this project is to create a single repository with multiple AWS Terraform examples to create simple web architectures.
+The goal of this project is to create a single repository with multiple AWS Terraform examples to create various architectures.
 
 ## Getting Started
 
