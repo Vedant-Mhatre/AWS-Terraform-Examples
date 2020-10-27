@@ -3,7 +3,6 @@ resource "aws_elb" "frontend" {
   #   availability_zones = ["ap-south-1a", "ap-south-1b"]
   subnets         = ["${aws_subnet.subnet-1.id}", "${aws_subnet.subnet-2.id}"]
   security_groups = ["${aws_security_group.allow-web_traffic-1.id}"]
-  instances       = ["${aws_instance.web-1.id}", "${aws_instance.web-2.id}"]
 
   listener {
     instance_port     = 80
