@@ -8,3 +8,5 @@ terraform.tfstate.backup
 .terraform/plugins/registry.terraform.io/hashicorp/aws/3.6.0/linux_amd64/*
 .terraform/plugins/selections.json
 myKP.pem
+.terraform.lock.hcl
+3-tier/aws/*
