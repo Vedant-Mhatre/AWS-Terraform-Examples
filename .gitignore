@@ -10,3 +10,4 @@ terraform.tfstate.backup
 myKP.pem
 .terraform.lock.hcl
 3-tier/aws/*
+jenkins-django-nginx/test-key.pem
