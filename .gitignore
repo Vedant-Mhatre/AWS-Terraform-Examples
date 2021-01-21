@@ -11,3 +11,5 @@ myKP.pem
 .terraform.lock.hcl
 3-tier/aws/*
 jenkins-django-nginx/test-key.pem
+jenkins-django-nginx/temp.txt
+jenkins-django-nginx/crash.log
