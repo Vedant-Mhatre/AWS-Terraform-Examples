@@ -4,7 +4,8 @@
 - [X] Jenkins Installation in startup script
 - [X] Nginx Installation in startup script
 - [X] Certbot Installation in startup script
-- [ ] Add domain name and setup reverse proxy
-- [ ] Add build stage in Jenkinsfile
-- [ ] Add deploy stage in Jenkinsfile
-- [ ] Setup any additional plugins on Jenkins
+- [ ] Add domain name and setup reverse proxy (optional)
+- [x] Clone private git repo by taking user credentials through user input
+- [ ] Modify settings.py to add instance public ip
+- [ ] Modify gunicorn.service file
+- [ ] Modify nginx file
