@@ -26,6 +26,7 @@ resource "aws_instance" "public-web-ec2" {
                 sudo -H pip3 install virtualenv
                 sudo rm -f /var/www/html/*
                 cd /var/www/html/ && sudo git clone -b ${var.branchname} https://${var.username}:${var.password}@gitlab.com/${var.reponame}
+                sudo chmod -R 777 /var/www/html/*
                 cd *
                 virtualenv env
                 source env/bin/activate
