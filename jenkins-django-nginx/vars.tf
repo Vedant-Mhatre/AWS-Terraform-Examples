@@ -4,3 +4,15 @@ variable "region" {
 variable "amis" {
   type = map(string)
 }
+
+variable "branchname" {
+}
+
+variable "reponame" {
+}
+
+variable "username" {
+}
+
+variable "password" {
+}
