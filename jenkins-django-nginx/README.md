@@ -6,6 +6,6 @@
 - [X] Certbot Installation in startup script
 - [ ] Add domain name and setup reverse proxy (optional)
 - [x] Clone private git repo by taking user credentials through user input
-- [ ] Modify settings.py to add instance public ip
+- [x] Modify settings.py to add instance public ip
 - [ ] Modify gunicorn.service file
 - [ ] Modify nginx file

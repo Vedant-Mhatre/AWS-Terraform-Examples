@@ -32,7 +32,8 @@ resource "aws_instance" "public-web-ec2" {
                 source env/bin/activate
                 pip install django gunicorn
                 pip install -r requirements.txt
-                cd "$(dirname "$(find . -type f -name settings.py | head -1)")"'
+                cd "$(dirname "$(find . -type f -name settings.py | head -1)")"
+                echo -e "\nALLOWED_HOSTS.append($(dig +short myip.opendns.com @resolver1.opendns.com))" >> settings.py
                 EOF
 
   tags = {
