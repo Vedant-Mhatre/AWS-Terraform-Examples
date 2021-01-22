@@ -16,3 +16,9 @@ variable "username" {
 
 variable "password" {
 }
+
+variable "projectname" {
+}
+
+variable "appname" {
+}
