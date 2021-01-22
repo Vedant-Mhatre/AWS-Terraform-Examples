@@ -1,9 +1,9 @@
 server {
-    server_name publicip
+    server_name publicip;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /var/www/html/project-name
+        root /var/www/html/project-name;
     }
 
     location / {
