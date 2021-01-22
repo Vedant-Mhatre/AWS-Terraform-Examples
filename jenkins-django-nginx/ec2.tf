@@ -24,7 +24,7 @@ resource "aws_instance" "public-web-ec2" {
                 sudo apt-get install python3-pip python3-dev libpq-dev libmysqlclient-dev -y
                 sudo -H pip3 install --upgrade pip
                 sudo -H pip3 install virtualenv
-                sudo rm -f /var/www/html/*
+                sudo rm -rf /var/www/html/*
                 cd /var/www/html/ && sudo git clone -b ${var.branchname} https://${var.username}:${var.password}@gitlab.com/${var.reponame}
                 sudo chmod -R 777 /var/www/html/*
                 cd *
@@ -33,7 +33,18 @@ resource "aws_instance" "public-web-ec2" {
                 pip install django gunicorn
                 pip install -r requirements.txt
                 cd "$(dirname "$(find . -type f -name settings.py | head -1)")"
-                echo -e "\nALLOWED_HOSTS.append($(dig +short myip.opendns.com @resolver1.opendns.com))" >> settings.py
+                echo -e "\nALLOWED_HOSTS.append('$(dig +short myip.opendns.com @resolver1.opendns.com)')" >> settings.py
+                sudo ufw allow 8000
+                cd ..
+                cd /var/www/html/*
+                export PROJECTNAME=${var.projectname}
+                export APPNAME=${var.appname}
+                wget http://vedant-mhatre.github.io/AWS-Terraform-Examples/jenkins-django-nginx/gunicorn.service
+                sudo sed -i 's@project-name@'"$PROJECTNAME"'@g' gunicorn.service
+                sudo sed -i 's@app-name@'"$APPNAME"'@g' gunicorn.service
+                sudo mv gunicorn.service /etc/systemd/system
+                sudo systemctl daemon-reload
+                sudo systemctl restart gunicorn
                 EOF
 
   tags = {
