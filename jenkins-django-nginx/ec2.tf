@@ -39,15 +39,26 @@ resource "aws_instance" "public-web-ec2" {
                 cd /var/www/html/*
                 export PROJECTNAME=${var.projectname}
                 export APPNAME=${var.appname}
-                wget http://vedant-mhatre.github.io/AWS-Terraform-Examples/jenkins-django-nginx/gunicorn.service
+                sudo wget http://vedant-mhatre.github.io/AWS-Terraform-Examples/jenkins-django-nginx/gunicorn.service
                 sudo sed -i 's@project-name@'"$PROJECTNAME"'@g' gunicorn.service
                 sudo sed -i 's@app-name@'"$APPNAME"'@g' gunicorn.service
                 sudo mv gunicorn.service /etc/systemd/system
                 sudo systemctl daemon-reload
                 sudo systemctl restart gunicorn
+                sudo wget http://vedant-mhatre.github.io/AWS-Terraform-Examples/jenkins-django-nginx/custom
+                sudo sed -i 's@project-name@'"$PROJECTNAME"'@g' custom
+                sudo sed -i 's@app-name@'"$APPNAME"'@g' custom
+                export IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+                sudo sed -i 's@publicip@'"$IP"'@g' custom
+                sudo mv custom /etc/nginx/sites-available
+                sudo ln -s /etc/nginx/sites-available/custom /etc/nginx/sites-enabled
+                sudo systemctl restart nginx
+                sudo ufw delete allow 8000
+                sudo ufw allow 'Nginx Full'
                 EOF
 
   tags = {
+    Name = "test"
     Project-Name = "test"
     Env          = "test"
   }
