@@ -8,4 +8,5 @@
 - [x] Clone private git repo by taking user credentials through user input
 - [x] Modify settings.py to add instance public ip
 - [x] Modify gunicorn.service file
-- [ ] Modify nginx file
+- [x] Modify nginx file
+- [ ] Add option to create new vpc,subnets,etc or use the existing ones
