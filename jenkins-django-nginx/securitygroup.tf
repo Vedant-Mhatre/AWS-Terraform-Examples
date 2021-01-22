@@ -3,13 +3,13 @@ resource "aws_security_group" "allow-web_traffic-1" {
   description = "Allow Web inbound traffic"
   vpc_id      = aws_vpc.first-vpc.id
 
-  # ingress {
-  #   description = "HTTP traffic"
-  #   from_port   = 80
-  #   to_port     = 80
-  #   protocol    = "tcp"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
+  ingress {
+    description = "HTTP traffic"
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
     description = "SSH traffic"
