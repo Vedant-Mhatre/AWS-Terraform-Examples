@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=project-name
-ExecStart=project-name/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:project-name/app-name.sock project-name.wsgi:application
+WorkingDirectory=/var/www/html/project-name
+ExecStart=/var/www/html/project-name/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/var/www/html/project-name/app-name.sock project-name.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
