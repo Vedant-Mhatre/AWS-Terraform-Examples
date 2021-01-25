@@ -1,12 +1,16 @@
 # To-Do:
 - [X]  VPC
 - [X]  Security Group
-- [X] Jenkins Installation in startup script
-- [X] Nginx Installation in startup script
-- [X] Certbot Installation in startup script
+- [X] Jenkins Installation
+- [X] Nginx Installation
+- [X] Certbot Installation
 - [ ] Add domain name and setup reverse proxy (optional)
-- [x] Clone private git repo by taking user credentials through user input
+- [x] Clone private git repo by taking credentials through user input
 - [x] Modify settings.py to add instance public ip
 - [x] Modify gunicorn.service file
 - [x] Modify nginx file
-- [ ] Add option to create new vpc,subnets,etc or use the existing ones
+- [ ] Add option to use existing vpc,subnets,etc or create new ones
+- [ ] Store terraform user inpur as environment variables
+- [ ] Move git clone part into Jenkinsfile and setup CI
+- [ ] Write code for testing 
+- [ ] Setup email notification for build fail
