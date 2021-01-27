@@ -22,7 +22,6 @@
 - [x] Modify gunicorn.service file
 - [x] Modify nginx file
 - [ ] Add option to use existing vpc,subnets,etc or create new ones
-- [ ] Store terraform user input as environment variables
 - [ ] Move git clone part into Jenkinsfile and setup CI
 - [ ] Write code for testing 
 - [ ] Setup email notification for build fail
