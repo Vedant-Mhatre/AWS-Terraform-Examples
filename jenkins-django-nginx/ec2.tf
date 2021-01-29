@@ -58,7 +58,7 @@ resource "aws_instance" "public-web-ec2" {
                 EOF
 
   tags = {
-    Name = "test"
+    Name         = "test"
     Project-Name = "test"
     Env          = "test"
   }
