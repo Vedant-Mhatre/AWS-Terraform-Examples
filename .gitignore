@@ -13,3 +13,5 @@ myKP.pem
 jenkins-django-nginx/test-key.pem
 jenkins-django-nginx/temp.txt
 jenkins-django-nginx/crash.log
+jenkins-django-nginx/terraform.tfstate.1611915831.backup
+jenkins-django-nginx/chatbot_backend.pem
