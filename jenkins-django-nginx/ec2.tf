@@ -1,9 +1,9 @@
 resource "aws_instance" "public-web-ec2" {
   ami                         = var.amis["ubuntu2004"]
-  instance_type               = "t2.micro"
+  instance_type               = "t3a.micro"
   availability_zone           = "ap-south-1a"
-  subnet_id                   = aws_subnet.subnet-1.id
-  vpc_security_group_ids      = [aws_security_group.allow-web_traffic-1.id]
+  subnet_id                   = var.subnet_id
+  vpc_security_group_ids      = [var.securitygroup_id]
   key_name                    = "test-key"
   associate_public_ip_address = true
   user_data                   = <<-EOF
