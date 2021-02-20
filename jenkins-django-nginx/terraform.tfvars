@@ -1,4 +1,4 @@
 amis = {
-  "ubuntu2004" = "ami-0a4a70bd98c6d6441"
-  "ubuntu1804" = "ami-0db0b3ab7df22e366"
+  "ubuntu2004" = "ami-029dbbe5a11f53cf7"
+  "ubuntu1804" = "ami-03ea771e255c4ce84"
 }
