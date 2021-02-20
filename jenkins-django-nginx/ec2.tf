@@ -1,6 +1,6 @@
 resource "aws_instance" "public-web-ec2" {
   ami                         = var.amis["ubuntu2004"]
-  instance_type               = "t3a.micro"
+  instance_type               = "t4g.micro"
   availability_zone           = "ap-south-1a"
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = [var.securitygroup_id]
@@ -68,7 +68,10 @@ resource "aws_instance" "public-web-ec2" {
   }
 }
 
-
+resource "aws_eip" "lb" {
+  instance = aws_instance.public-web-ec2.id
+  vpc      = true
+}
 
 output "server_public_ip" {
   value = aws_instance.public-web-ec2.public_ip
