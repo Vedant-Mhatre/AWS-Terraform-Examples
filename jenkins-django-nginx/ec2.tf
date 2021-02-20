@@ -77,7 +77,3 @@ resource "aws_eip" "lb" {
 output "server_public_eip" {
   value = aws_eip.lb.public_ip
 }
-
-output "server_public_ip" {
-  value = aws_instance.public-web-ec2.public_ip
-}
