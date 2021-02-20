@@ -13,7 +13,7 @@ variable "branchname" {
 
 variable "reponame" {
   type    = string
-  default = "constituency-dashboard/dashboard-middleware.git"
+  default = "skillmapping/chatbot.git"
 }
 
 variable "username" {
@@ -24,28 +24,31 @@ variable "username" {
 
 variable "password" {
   type    = string
-  default = "dBQriYZA4g2xis2"
+  default = ""
   # your password
 }
 
 variable "projectname" {
   type    = string
-  default = "dashboard-middleware"
+  default = "chatbot"
 }
 
 variable "appname" {
   type    = string
-  default = "ulb"
+  default = "chatbot"
 }
 
 variable "vpc_id" {
   type = string
+  default = "vpc-0e188dd90350c6cc0"
 }
 
 variable "subnet_id" {
   type = string
+  default = "subnet-0eb854ddc4dc49410"
 }
 
 variable "securitygroup_id" {
   type = string
+  default = "sg-0e6403cd2b062a3e9"
 }
