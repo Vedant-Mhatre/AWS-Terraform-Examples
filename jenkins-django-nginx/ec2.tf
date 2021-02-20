@@ -23,17 +23,18 @@ resource "aws_instance" "public-web-ec2" {
                 sudo snap install --classic certbot
                 sudo apt-get install python3-pip python3-dev libpq-dev libmysqlclient-dev -y
                 sudo -H pip3 install --upgrade pip
-                sudo -H pip3 install virtualenv
                 sudo rm -rf /var/www/html/*
                 cd /var/www/html/ && sudo git clone -b ${var.branchname} https://${var.username}:${var.password}@gitlab.com/${var.reponame}
                 sudo chmod -R 777 /var/www/html/*
                 cd *
+                cd "$(dirname "$(find . -type f -name settings.py | head -1)")"
+                echo -e "\nALLOWED_HOSTS.append('$(dig +short myip.opendns.com @resolver1.opendns.com)')" >> settings.py
+                sudo -H pip3 install virtualenv                
+                cd ..
                 virtualenv env
                 source env/bin/activate
                 pip install django gunicorn
                 pip install -r requirements.txt
-                cd "$(dirname "$(find . -type f -name settings.py | head -1)")"
-                echo -e "\nALLOWED_HOSTS.append('$(dig +short myip.opendns.com @resolver1.opendns.com)')" >> settings.py
                 sudo ufw allow 8000
                 cd ..
                 cd /var/www/html/*
@@ -71,6 +72,10 @@ resource "aws_instance" "public-web-ec2" {
 resource "aws_eip" "lb" {
   instance = aws_instance.public-web-ec2.id
   vpc      = true
+}
+
+output "server_public_eip" {
+  value = aws_eip.lb.public_ip
 }
 
 output "server_public_ip" {
