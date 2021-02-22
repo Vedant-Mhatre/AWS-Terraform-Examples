@@ -1,9 +1,18 @@
 resource "aws_instance" "public-web-ec2" {
-  ami                         = var.amis["ubuntu2004"]
+  ami                         = var.amis["arm-ubuntu2004"]
   instance_type               = "t4g.micro"
   availability_zone           = "ap-south-1a"
-  subnet_id                   = var.subnet_id
-  vpc_security_group_ids      = [var.securitygroup_id]
+
+  # For launching instance in new vpc,subnet and sg created by terraform:
+  # Uncomment vpc.tf and securitygroup.tf
+  subnet_id                   = aws_subnet.subnet-1.id
+  vpc_security_group_ids      = [aws_security_group.allow-web_traffic-1.id]
+
+  # For launching instance in existing vpc, subnet and sg:
+  # Comment out vpc.tf and securitygroup.tf
+  # subnet_id                   = var.subnet_id
+  # vpc_security_group_ids      = [var.securitygroup_id]
+  
   key_name                    = "test-key"
   associate_public_ip_address = true
   user_data                   = <<-EOF
