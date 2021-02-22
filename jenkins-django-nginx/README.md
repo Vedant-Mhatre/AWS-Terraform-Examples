@@ -1,6 +1,6 @@
 
 ### Prerequisites
-* Terraform [(Installtion Process)](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+* Terraform [(Installation Process)](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 * AWS account
 * AWS CLI [(Installation Process)](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
