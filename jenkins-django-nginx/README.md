@@ -16,7 +16,6 @@
 - [X] Jenkins Installation
 - [X] Nginx Installation
 - [X] Certbot Installation
-- [ ] Add domain name and setup reverse proxy (optional)
 - [x] Clone private git repo by taking credentials through user input
 - [x] Modify settings.py to add instance public ip
 - [x] Modify gunicorn.service file
